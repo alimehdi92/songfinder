@@ -1,1 +1,37 @@
-Hello World
+<html>
+    <head>
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+    </head>
+    <body ng-app="songfinder" ng-controller='FetchSongsCtrl'>
+        <div id="header">
+            <h3>Song Finder!</h3>
+            <div class="row" >
+                <div class="col-xs-10 col-md-8">
+                    <input type="text" class="form-control" placeholder="Search Song Name" ng-model="query">
+                </div>
+                <div class="col-xs-2 col-md-4">
+                    <button type="submit" ng-click="getSongs()" class="btn btn-primary">Search</button>
+                </div>
+            </div>
+        </div>
+        
+        <div id="results" ng-show="results">
+            <table class="table table-bordered">
+                <tr>
+                    <th>Name</th>
+                    <th>Link</th>
+                </tr>
+                <tr ng-repeat="each in results.entry">
+                    <td>{{ each.title.$t }}</td>
+                    <td>
+                    <a ng-href="http://peggo.co/dvr/{{ getVideoID(each.link[0].href) }}" target="_blank">Download MP3</a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        
+        <script src="script/angular.min.js"></script>
+        <script src="script/app.js"></script>
+        <script src="script/youtubemp3script-v1.js"></script>
+    </body>
+</html>
