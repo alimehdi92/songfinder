@@ -9,16 +9,16 @@
             
             <div class="row center-block" >
                 <form>
-                <div class="col-xs-10">
+                <div class="col-xs-10 col-md-11">
                     <input type="text" class="form-control" placeholder="Search Song Name" ng-model="query">
                 </div>
-                <div class="col-xs-1">
+                <div class="col-xs-1 col-md-1">
                     <button type="submit" ng-click="getSongs()" class="btn btn-primary">Go</button>
                 </div>                
                 </form>
             </div>
         </div>
-        
+        <br>
         <div id="results" ng-show="results">
             <table class="table table-bordered">
                 <tr>
