@@ -5,18 +5,16 @@
     </head>
     <body ng-app="songfinder" ng-controller='FetchSongsCtrl'>
         <div id="header">
-            <h3>Song Finder!</h3>
-            <div class="row" >
-                <form class=form-inline>
-                
-                <div class="col-xs-8 form-group">
+            <p class="text-center">Song Finder!</p>
+            
+            <div class="row center-block" >
+                <form>
+                <div class="col-xs-10">
                     <input type="text" class="form-control" placeholder="Search Song Name" ng-model="query">
                 </div>
+                <div class="col-xs-1">
                     <button type="submit" ng-click="getSongs()" class="btn btn-primary">Go</button>
-                <div class="col-xs-4">
-                    
-                </div>
-                
+                </div>                
                 </form>
             </div>
         </div>
