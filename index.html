@@ -2,18 +2,19 @@
     <head>
         <meta name="viewport" content="width=device-width,initial-scale=1">
         <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/app.css">
     </head>
     <body ng-app="songfinder" ng-controller='FetchSongsCtrl'>
         <div id="header">
-            <p class="text-center">Song Finder!</p>
+            <h3 class="text-muted">Song Finder!</h3>
             
             <div class="row center-block" >
                 <form>
-                <div class="col-xs-10 col-md-11">
+                <div class="col-xs-9 col-md-11">
                     <input type="text" class="form-control" placeholder="Search Song Name" ng-model="query">
                 </div>
                 <div class="col-xs-1 col-md-1">
-                    <button type="submit" ng-click="getSongs()" class="btn btn-primary">Go</button>
+                    <button type="submit" ng-click="getSongs()" class="btn btn-primary">Search</button>
                 </div>                
                 </form>
             </div>
@@ -23,15 +24,19 @@
             <table class="table table-bordered">
                 <tr>
                     <th>Name</th>
-                    <th>Link</th>
                 </tr>
                 <tr ng-repeat="each in results.entry">
-                    <td>{{ each.title.$t }}</td>
                     <td>
-                    <a ng-href="http://peggo.co/dvr/{{ getVideoID(each.link[0].href) }}" target="_blank">Download MP3</a>
+                      <a ng-href="http://peggo.co/dvr/{{ getVideoID(each.link[0].href) }}" target="_blank">
+                        {{ each.title.$t }}
+                      </a>
                     </td>
                 </tr>
             </table>
+        </div>
+        <br>
+        <div id="footer">
+          <p align="center">Copyright 2015, by Ali Mehdi</p>
         </div>
         
         <script src="script/angular.min.js"></script>

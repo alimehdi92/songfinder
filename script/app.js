@@ -20,6 +20,5 @@ app.controller('FetchSongsCtrl', ['$scope', '$http', function($scope, $http) {
           //error
         }
     }
-//    $http.get("https://gdata.youtube.com/feeds/api/videos?q=shakira&alt=json").success(function(response) {$scope.some = response.feed.entry[0].title.$t;});
 }]);
 
