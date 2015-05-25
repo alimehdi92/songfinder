@@ -1,31 +1,35 @@
 app = angular.module('songfinder', []);
 
-app.controller('FetchSongsCtrl', ['$scope', '$http', function($scope, $http) {
-    var youtubeAPI = 'https://gdata.youtube.com/feeds/api/videos?alt=json&q=';
-    var downloaderAPI = 'http://YouTubeInMP3.com/fetch/?video=';
+app.controller('FetchSongsCtrl', ['$scope', function($scope) {
     $scope.results = false;
     $scope.loading = false;
     
     $scope.getSongs = function () {
         $scope.results = false;
         $scope.loading = true;
-        
-        $http.get(youtubeAPI + $scope.query).success(function(response) {
+
+        var request = gapi.client.youtube.search.list({
+            part: "snippet",
+            type: "video",
+            q: $scope.query,
+            maxResults: 10
+        });
+        // execute the request
+        request.execute(function (response) {
+            var results = response.result.items;
             $scope.loading = false;
-            $scope.results = response.feed;
+            $scope.results = results;
+            $scope.$apply();
         });
     }
-    
-    $scope.getVideoID = function(url) {
-        var regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
-        var match = url.match(regExp);
-        if (match && match[2].length == 11) {
-          return match[2];
-        } else {
-          //error
-        }
-    }
 }]);
+
+// init function for the youtube-api
+function init() {
+    gapi.client.setApiKey("AIzaSyDXXfOvUfL-fq9KgfnFKOFKSUf-HDnLmhI");
+    gapi.client.load("youtube", "v3", function() {});
+}
+
 
 
 

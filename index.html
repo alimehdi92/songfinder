@@ -26,10 +26,10 @@
                 <tr>
                     <th>Name</th>
                 </tr>
-                <tr ng-repeat="each in results.entry">
+                <tr ng-repeat="each in results">
                     <td>
-                      <a ng-href="http://peggo.co/dvr/{{ getVideoID(each.link[0].href) }}" target="_blank">
-                        {{ each.title.$t }}
+                      <a ng-href="http://peggo.co/dvr/{{each.id.videoId}}" target="_blank">
+                          {{ each.snippet.title }}
                       </a>
                     </td>
                 </tr>
@@ -44,8 +44,7 @@
         </div>
         
         <script src="script/angular.min.js"></script>
-        <script src="script/spin.min.js"></script>
         <script src="script/app.js"></script>
-        <script src="script/youtubemp3script-v1.js"></script>
+        <script src="https://apis.google.com/js/client.js?onload=init"></script>
     </body>
 </html>
