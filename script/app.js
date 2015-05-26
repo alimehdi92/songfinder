@@ -14,6 +14,7 @@ app.controller('FetchSongsCtrl', ['$scope', function($scope) {
             q: $scope.query,
             maxResults: 10
         });
+        $scope.query = "";
         // execute the request
         request.execute(function (response) {
             var results = response.result.items;
